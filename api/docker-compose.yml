@@ -1,0 +1,11 @@
+version: "3"
+services:
+  imdb_graph:
+    build: .
+    image: imdb_graph_api
+    container_name: imdb_graph_api
+    restart: always
+    ports:
+      - 3456:3456
+    volumes:
+      - .:/usr/src/imdb_graph_api

@@ -1,45 +1,72 @@
-**!! Atenção: Renomeie o seu repositório para (Tema)_(NomeDoProjeto). !!** 
+# Grafos2_IMDBConnection
 
 Temas:
- - Grafos1
  - Grafos2
- - PD
- - D&C
- - Greed
- - Final 
- 
- **!! *Não coloque os nomes dos alunos no título do repositório*. Exemplo de título correto: Grafos2_Labirinto-do-Minotauro !!**
- 
- (Apague essa seção)
 
 # NomedoProjeto
-
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: XXXXXXXXXX<br>
+  🕸️ IMDBConnection
+  
+**Número da Lista**: 14<br>
+**Conteúdo da Disciplina**: Dijkstra <br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 16/0119553  |  👨‍💻 Felipe Campos de Almeida |
+| 16/0005736  |  👩‍💻 Fabiana Luiza Vasconcelos Pfeilsticker Ribas |
 
-## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+## Sobre ℹ️
+O IMDBConnection utiliza um Internet Movie Database ou IMDb que é uma base de dados online de informação sobre cinema TV, música e games, hoje pertencente à Amazon, para aplicar a teoria de Kevin Bacon 🥓 de que todas as pessoas do mundo estão separadas por no máximo seis graus de distância. No nossso projeto, limitamos a base para atores e atrizes e os filmes correlacionados. Nosso trabalho propoem encontrar o vínculo mais curto entre o ator ou atriz de interesse e qualquer ator ou atriz alvo. Além disso utilizamos o algoritimo de Dijkstra para calcular o caminho de atores e atrizes com mais conexções. 
 
-## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+## 📷 Screenshots 
 
-## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+## ⚙️ Instalação 
+**Linguagem**: 🐍 Python<br>
+**Framework**: 🌶️ Flask e 💜 Insomnia<br>
 
-## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+
+### Para distribuição Linux 🐧 :
+
+**Para a execução do projeto é necessário a instalação previa do docker e docker-compose.**
+
+1) [Clone](https://help.github.com/en/articles/cloning-a-repository) o repositório do projeto. Para clonar vá ao terminal e digite:
+~~~
+$ git clone https://github.com/projeto-de-algoritmos/Grafos2_IMDBConnection.git
+~~~
+
+2) Entre na pasta do projeto:
+~~~
+$ cd Grafos2_IMDBConnection
+~~~
+
+3) Para compilar o projeto, entre a pasta /api e execute o comando do docker:
+~~~
+$ cd api
+$ docker-compose up --build
+~~~
+
+4) Depois de realizar todos esses passos, aproveite o projeto e divirta-se!
+
+## 💻 Uso 
+Utilize o isominia para as requisições http. Siga os exemplos a baixo pra utilizar as rotas. Escolha o seu artista favorito para testar a aplicação.😉
+
+
+1) Visualize o Grafo completo em:http://localhost:3456/get_full_graph
+
+2) Pesquise sobre um ator ou atriz enviado o payload a baixo para: http://localhost:3456/actor_graph
+~~~
+{
+    "actor": "Lara Grice"
+}
+~~~
+
+3) Visualize o menor caminho entre os atores ou atrizes enviado o payload a baixo para: http://localhost:3456/shortest_path
+~~~
+{ 
+    "start": "Seu Jorge",
+    "target":  "Leonardo DiCaprio"
+}
+~~~
 
 ## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
-
-
+Referências: 
