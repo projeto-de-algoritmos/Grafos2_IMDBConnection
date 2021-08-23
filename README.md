@@ -3,8 +3,7 @@
 Temas:
  - Grafos2
 
-# NomedoProjeto
-  🕸️ IMDBConnection
+# 🕸️ IMDBConnection
   
 **Número da Lista**: 14<br>
 **Conteúdo da Disciplina**: Dijkstra <br>
@@ -16,9 +15,20 @@ Temas:
 | 16/0005736  |  👩‍💻 Fabiana Luiza Vasconcelos Pfeilsticker Ribas |
 
 ## Sobre ℹ️
-O IMDBConnection utiliza um Internet Movie Database ou IMDb que é uma base de dados online de informação sobre cinema TV, música e games, hoje pertencente à Amazon, para aplicar a teoria de Kevin Bacon 🥓 de que todas as pessoas do mundo estão separadas por no máximo seis graus de distância. No nossso projeto, limitamos a base para atores e atrizes e os filmes correlacionados. Nosso trabalho propoem encontrar o vínculo mais curto entre o ator ou atriz de interesse e qualquer ator ou atriz alvo. Além disso utilizamos o algoritimo de Dijkstra para calcular o caminho de atores e atrizes com mais conexções. 
+O IMDBConnection utiliza um Internet Movie Database ou IMDb que é uma base de dados online de informação sobre cinema TV, música e games, hoje pertencente à Amazon, para aplicar a teoria de Kevin Bacon 🥓 de que todas as pessoas do mundo estão separadas por no máximo seis graus de distância. No nossso projeto, limitamos a base para atores e atrizes e os filmes correlacionados. Nosso trabalho propoem encontrar o vínculo mais curto entre o ator ou atriz de interesse e qualquer ator ou atriz alvo. Além disso utilizamos o algoritimo de Dijkstra para calcular o caminho entre atores e atrizes com mais conexções. 
 
 ## 📷 Screenshots 
+Retorno da execução do projeto. Grafo dos atores com mais conexções.
+
+![dijkstra_graph_result](img/dijkstra_path.jpg)
+
+O peso das arestas são calculados de acordo com a quantidades de filmes em que os atores atuaram juntos.(1/shared_movies)
+
+![dijkstra_graph_algorithm](img/dijkstra_algorithm.jpg)
+
+Total de filmes pode ser modificado pra menos ou mais. Entretanto é recomendado não utilizar um valor muito alto pois isso pode impactar no tempo de execução
+
+![dijkstra_graph_algorithm](img/total_movies.jpg)
 
 ## ⚙️ Instalação 
 **Linguagem**: 🐍 Python<br>
@@ -48,19 +58,9 @@ $ docker-compose up --build
 4) Depois de realizar todos esses passos, aproveite o projeto e divirta-se!
 
 ## 💻 Uso 
-Utilize o isominia para as requisições http. Siga os exemplos a baixo pra utilizar as rotas. Escolha o seu artista favorito para testar a aplicação.😉
+Utilize o isominia para as requisições http. Siga o exemplo a baixo pra utilizar a rota. Escolha o seu artista favorito para testar a aplicação.😉
 
-
-1) Visualize o Grafo completo em:http://localhost:3456/get_full_graph
-
-2) Pesquise sobre um ator ou atriz enviado o payload a baixo para: http://localhost:3456/actor_graph
-~~~
-{
-    "actor": "Lara Grice"
-}
-~~~
-
-3) Visualize o menor caminho entre os atores ou atrizes enviado o payload a baixo para: http://localhost:3456/shortest_path
+1) Visualize o menor caminho entre os atores ou atrizes enviado o payload a baixo para: http://localhost:3456/dijkstra_path
 ~~~
 { 
     "start": "Seu Jorge",
@@ -69,4 +69,4 @@ Utilize o isominia para as requisições http. Siga os exemplos a baixo pra util
 ~~~
 
 ## Outros 
-Referências: 
+Referências: [Video utilizado pra implementação do algoritimo de Dijkstra](https://www.youtube.com/watch?v=IG1QioWSXRI)
