@@ -40,3 +40,59 @@ def BFS_SP(graph, start, target):
     # are not connected
 
     return []
+
+
+def dijkstra(graph, start, target):
+    distances = {}
+
+    for actor, connections_list in graph.items():
+        actor_distances = {}
+        for other_actor in connections_list:
+            actor_distances[other_actor["name"]] = 1/len(other_actor["shared_movies"])
+
+        distances[actor] = actor_distances
+
+
+    shortest_distance = {}
+    predecessor = {}
+    unseen_nodes = distances
+    infinity = 999999999999999
+    path = []
+
+    for node in unseen_nodes:
+        shortest_distance[node] = infinity
+
+    shortest_distance[start] = 0
+    
+    while unseen_nodes:
+        min_node = None
+        for node in unseen_nodes:
+            if min_node is None:
+                min_node = node
+            elif shortest_distance[node] < shortest_distance[min_node]:
+                min_node = node
+
+        for child_node, weight in distances[min_node].items():
+            if weight + shortest_distance[min_node] < shortest_distance[child_node]:
+                shortest_distance[child_node] = weight + shortest_distance[min_node]
+                predecessor[child_node] = min_node
+
+        unseen_nodes.pop(min_node)
+
+    current_node = target
+
+    while current_node != start: 
+        path.insert(0, current_node)
+        current_node = predecessor[current_node]
+
+    path.insert(0, start)
+
+    if shortest_distance[target] != infinity:
+        return path
+
+    else:
+        return []
+        
+
+
+    

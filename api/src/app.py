@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from numpy import shares_memory
 from parse_json import get_movies_json
 import pandas as pd
-from bfs import BFS_SP
+from bfs import BFS_SP, dijkstra
 import json
 
 load_dotenv()
@@ -38,6 +38,48 @@ def get_actor_graph():
 @app.route('/get_full_graph/')
 def get_full_graph():
     return graph
+
+@app.route('/dijkstra_path/')
+def dijkstra_path():
+
+    data = request.get_json()
+    start = data["start"]
+    target = data["target"]
+
+    path = dijkstra(graph, start, target)
+    
+    nodes = []
+
+    for i in range(len(path) - 1):
+        this_actor = path[i]
+        next_actor = path[i+1]
+        for actor in graph[this_actor]:
+            if actor["name"] == next_actor:
+                print(actor["shared_movies"])
+                shared_movies = []
+                for movie in actor["shared_movies"]:
+                    description = df_movies[df_movies["original_title"] == movie]['description'].iloc[0]
+                    year = df_movies[df_movies["original_title"] == movie]['year'].iloc[0]
+                    genre = df_movies[df_movies["original_title"] == movie]['genre'].iloc[0]
+                    mv = { 
+                        "movie": movie,
+                        "description": description,
+                        "year": year,
+                        "genre": genre
+                    }
+
+                    shared_movies.append(mv)
+                            
+
+                nodes.append({
+                    "start": this_actor,
+                    "end": next_actor,
+                    "shared_movies": shared_movies
+                })
+        
+
+
+    return json.dumps(nodes)
 
 @app.route('/shortest_path/')
 def shortest_path():

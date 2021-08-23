@@ -44,6 +44,8 @@ def get_movies_json(df_movies, number_of_movies):
                             'shared_movies': [title]}
                         graph[actor].append(obj)
 
+    
+
     stop = time.time()
     print(f"[INFO] Graph generated in {round(stop - start, 1)} seconds!", flush=True)
     return graph
